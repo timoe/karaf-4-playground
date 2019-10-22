@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>karaf4-playground</groupId>
+        <artifactId>parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>playground-assembly</artifactId>
+    <name>Karaf 4 Playground Assembly</name>
+
+    <packaging>karaf-assembly</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>framework</artifactId>
+            <version>${karaf4.version}</version>
+            <type>kar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>standard</artifactId>
+            <version>${karaf4.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>karaf4-playground</groupId>
+            <artifactId>playground-feature-1</artifactId>
+            <version>${project.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>karaf4-playground</groupId>
+            <artifactId>playground-feature-2</artifactId>
+            <version>${project.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.karaf.tooling</groupId>
+                <artifactId>karaf-maven-plugin</artifactId>
+                <version>${karaf4.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <finalName>${project.artifactId}</finalName>
+
+                    <archiveZip>false</archiveZip>
+
+                    <startupFeatures>
+                        <feature>eventadmin</feature>
+                    </startupFeatures>
+
+                    <bootFeatures>
+                        <feature>standard</feature>
+                        <feature>bundle</feature>
+                        <feature>config</feature>
+                        <feature>diagnostic</feature>
+                        <feature>feature</feature>
+                        <feature>shell</feature>
+                        <feature>log</feature>
+                        <feature>management</feature>
+                        <feature>package</feature>
+                        <feature>shell-compat</feature>
+                        <feature>ssh</feature>
+                        <feature>system</feature>
+                        <feature>wrap</feature>
+                        <feature>http-whiteboard</feature>
+                        <feature>deployer</feature>
+                        <feature>service</feature>
+                        <feature>kar</feature>
+                        <feature>scr</feature>
+                        <feature>aries-blueprint</feature>
+                        <feature>webconsole</feature>
+
+                        <feature>playground-feature-1</feature>
+                    </bootFeatures>
+                    <installedFeatures>
+                        <feature>playground-feature-2</feature>
+                    </installedFeatures>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>playground-features</artifactId>
+        <groupId>karaf4-playground</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>playground-feature-2</artifactId>
+    <name>Karaf 4 Playground Feature 2</name>
+    <packaging>feature</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>karaf4-playground</groupId>
+            <artifactId>playground-api-consumer-1</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>karaf4-playground</groupId>
+            <artifactId>playground-api-consumer-2</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.karaf.tooling</groupId>
+                <artifactId>karaf-maven-plugin</artifactId>
+                <version>${karaf4.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <includeTransitiveDependency>false</includeTransitiveDependency>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
