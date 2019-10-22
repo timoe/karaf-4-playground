@@ -9,16 +9,9 @@ import org.osgi.service.component.annotations.ReferencePolicyOption;
 
 @Component
 public class ConsumerTwo {
+
+  @Reference(target = "(type=world)")
   private ResponderService responder;
-
-  @Reference(target = "(type=world)", unbind = "unsetResponder")
-  public void setResponder(ResponderService responder) {
-    this.responder = responder;
-  }
-
-  public void unsetResponder(ResponderService responder) {
-    System.out.println("unsetResponder");
-  }
 
   @Activate
   public void activate(final Map<String, Object> props) {
