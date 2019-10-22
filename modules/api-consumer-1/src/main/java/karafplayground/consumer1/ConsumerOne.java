@@ -1,9 +1,9 @@
 package karafplayground.consumer1;
 
 import karafplayground.interface1.ResponderService;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
+import org.apache.felix.scr.annotations.Activate;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Reference;
 
 @Component
 public class ConsumerOne {

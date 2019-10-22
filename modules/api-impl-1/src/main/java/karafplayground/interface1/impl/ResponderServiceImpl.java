@@ -2,13 +2,15 @@ package karafplayground.interface1.impl;
 
 import karafplayground.interface1.ResponderService;
 import java.util.Map;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.apache.felix.scr.annotations.Activate;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.ConfigurationPolicy;
+import org.apache.felix.scr.annotations.Service;
 
 @Component(immediate = true,
     configurationPid = "ResponderService",
-    configurationPolicy = ConfigurationPolicy.REQUIRE)
+    policy = ConfigurationPolicy.REQUIRE)
+@Service
 public class ResponderServiceImpl implements ResponderService {
   public String respondToMe() {
     return "Hello World!";

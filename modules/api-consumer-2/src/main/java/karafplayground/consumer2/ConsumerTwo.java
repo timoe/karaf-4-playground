@@ -2,10 +2,9 @@ package karafplayground.consumer2;
 
 import karafplayground.interface1.ResponderService;
 import java.util.Map;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferencePolicyOption;
+import org.apache.felix.scr.annotations.Activate;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Reference;
 
 @Component
 public class ConsumerTwo {
