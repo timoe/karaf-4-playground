@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <!-- References -->
+    <reference id="blueprintResponderService"
+               interface="karafplayground.interface1.BlueprintResponderService"/>
+
+    <reference id="scrResponderService"
+               interface="karafplayground.interface1.ScrResponderService"
+               availability="optional"/>
+
+    <!-- Beans -->
+    <bean id="bluePrintConsumer" class="karafplayground.blueprint.consumer.BluePrintConsumer">
+        <argument ref="blueprintResponderService" index="0"/>
+        <argument ref="scrResponderService" index="1"/>
+    </bean>
+</blueprint>

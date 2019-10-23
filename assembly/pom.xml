@@ -86,14 +86,12 @@
                         <feature>service</feature>
                         <feature>kar</feature>
                         <feature>scr</feature>
-                        <feature>aries-blueprint</feature>
                         <feature>webconsole</feature>
+                        <feature>aries-blueprint</feature>
 
                         <feature>playground-feature-1</feature>
-                    </bootFeatures>
-                    <installedFeatures>
                         <feature>playground-feature-2</feature>
-                    </installedFeatures>
+                    </bootFeatures>
                 </configuration>
             </plugin>
         </plugins>

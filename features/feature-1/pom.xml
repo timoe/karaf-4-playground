@@ -11,7 +11,7 @@
 
     <artifactId>playground-feature-1</artifactId>
     <name>Karaf 4 Playground Feature 1</name>
-    <packaging>feature</packaging>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -24,6 +24,11 @@
             <artifactId>playground-api-impl-1</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>karaf4-playground</groupId>
+            <artifactId>playground-api-impl-2</artifactId>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -32,9 +37,17 @@
                 <groupId>org.apache.karaf.tooling</groupId>
                 <artifactId>karaf-maven-plugin</artifactId>
                 <version>${karaf4.version}</version>
-                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>generate-feature-descriptor</id>
+                        <goals>
+                            <goal>features-generate-descriptor</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                    </execution>
+                </executions>
                 <configuration>
-                    <includeTransitiveDependency>false</includeTransitiveDependency>
+                    <aggregateFeatures>true</aggregateFeatures>
                 </configuration>
             </plugin>
         </plugins>

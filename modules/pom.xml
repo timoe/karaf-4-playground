@@ -16,7 +16,9 @@
     <modules>
         <module>api-consumer-1</module>
         <module>api-consumer-2</module>
+        <module>api-consumer-blueprint</module>
         <module>api-interface-1</module>
         <module>api-impl-1</module>
+        <module>api-impl-2</module>
     </modules>
 </project>

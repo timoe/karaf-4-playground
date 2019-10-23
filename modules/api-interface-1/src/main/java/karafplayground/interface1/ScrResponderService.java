@@ -1,5 +1,5 @@
 package karafplayground.interface1;
 
-public interface ResponderService {
+public interface ScrResponderService {
   String respondToMe();
 }

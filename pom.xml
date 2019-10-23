@@ -13,6 +13,11 @@
     <packaging>pom</packaging>
 
     <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <karaf4.version>4.2.6</karaf4.version>
     </properties>
@@ -42,21 +47,37 @@
                 <groupId>karaf4-playground</groupId>
                 <artifactId>playground-api-interface-1</artifactId>
                 <version>${project.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>karaf4-playground</groupId>
                 <artifactId>playground-api-impl-1</artifactId>
                 <version>${project.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>karaf4-playground</groupId>
+                <artifactId>playground-api-impl-2</artifactId>
+                <version>${project.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>karaf4-playground</groupId>
                 <artifactId>playground-api-consumer-1</artifactId>
                 <version>${project.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>karaf4-playground</groupId>
                 <artifactId>playground-api-consumer-2</artifactId>
                 <version>${project.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>karaf4-playground</groupId>
+                <artifactId>playground-api-blueprint-consumer</artifactId>
+                <version>${project.version}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -64,6 +85,16 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-scr-plugin</artifactId>
@@ -85,10 +116,50 @@
                     <artifactId>maven-bundle-plugin</artifactId>
                     <version>4.2.1</version>
                     <extensions>true</extensions>
+                    <inherited>true</inherited>
+                    <configuration>
+                        <obrRepository>NONE</obrRepository>
+                        <instructions>
+                            <nsh_interface>org.apache.aries.blueprint.NamespaceHandler
+                            </nsh_interface>
+                            <nsh_namespace>osgi.service.blueprint.namespace</nsh_namespace>
+                        </instructions>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>cleanVersions</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>cleanVersions</goal>
+                            </goals>
+                            <configuration>
+                                <versions>
+                                    <karaf.osgi.version>${project.version}</karaf.osgi.version>
+                                </versions>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
+
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
-                    <version>2.5.2</version>
+                    <version>3.0.0-M1</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.karaf.tooling</groupId>
+                    <artifactId>karaf-services-maven-plugin</artifactId>
+                    <version>${karaf4.version}</version>
+                    <executions>
+                        <execution>
+                            <id>service-metadata-generate</id>
+                            <phase>process-classes</phase>
+                            <goals>
+                                <goal>service-metadata-generate</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>

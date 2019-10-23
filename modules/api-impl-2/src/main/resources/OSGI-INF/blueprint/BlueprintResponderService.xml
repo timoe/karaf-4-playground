@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <!-- Beans -->
+    <bean id="blueprintResponderService"
+          class="karafplayground.interface1.impl.BlueprintResponderServiceImpl"/>
+
+    <service ref="blueprintResponderService"
+             interface="karafplayground.interface1.BlueprintResponderService"/>
+</blueprint>

@@ -9,8 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>playground-api-impl-1</artifactId>
-    <name>Karaf 4 Playground Interface implementation | SCR Services</name>
+    <artifactId>playground-api-impl-2</artifactId>
+    <name>Karaf 4 Playground Interface implementation | Blueprint Services</name>
     <packaging>bundle</packaging>
 
     <dependencies>
@@ -26,7 +26,6 @@
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.scr.annotations</artifactId>
         </dependency>
-
         <dependency>
             <groupId>karaf4-playground</groupId>
             <artifactId>playground-api-interface-1</artifactId>
